@@ -15,11 +15,14 @@ export function AppShell() {
   if (!isAuthenticated) return <Navigate to="/login" replace />;
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--surta-ivory)' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--sm-ivory)' }}>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(p => !p)} />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, overflow: 'hidden' }}>
         <TopBar />
-        <main className="app-main" style={{ padding: 28 }}>
+        <main
+          className="app-main"
+          style={{ padding: '28px 32px', maxWidth: '100%' }}
+        >
           <Outlet />
         </main>
       </div>
