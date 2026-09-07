@@ -26,7 +26,7 @@ def get_or_create_user(db, name: str, email: str, role: str) -> User:
 
 def seed_master_terms(db) -> int:
     path = Path(__file__).resolve().parents[2] / "INFO" / "reference-data" / "ayurveda-master-dictionary.json"
-    payload = json.loads(path.read_text())
+    payload = json.loads(path.read_text(encoding="utf-8"))
     created = 0
     for item in payload["terms"]:
         category = item["category"].upper()
