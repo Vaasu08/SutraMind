@@ -1,24 +1,33 @@
-# Logs
-logs
-*.log
+# Operating System files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Python & Backend
+backend/.venv/
+.venv/
+venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+**/.pytest_cache/
+.ruff_cache/
+**/.ruff_cache/
+backend/.env
+backend/.env.local
+backend/sutramind.db
+backend/*.db
+*.sqlite3
+
+# Node & Frontend
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+frontend/.env.local
+frontend/.env.*.local
+.eslintcache
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
