@@ -14,4 +14,5 @@ COPY INFO INFO
 WORKDIR /app/backend
 EXPOSE 8000
 
+# Railway injects PORT; bind all interfaces so the platform healthcheck can reach /health.
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

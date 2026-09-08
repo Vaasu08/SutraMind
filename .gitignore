@@ -20,6 +20,9 @@ backend/sutramind.db
 backend/*.db
 *.sqlite3
 
+# Railway local link metadata
+.railway/
+
 # Node & Frontend
 frontend/node_modules/
 node_modules/
