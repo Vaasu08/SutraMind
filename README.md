@@ -171,6 +171,32 @@ uvicorn app.main:app --reload --port 8000
 
 ---
 
+### 4. Production deploy (frontend + FastAPI)
+
+Vercel hosts the React app only. FastAPI needs its own service (Render or Railway).
+
+**Backend (Render)**
+
+1. Push this repo to GitHub.
+2. Open [Render](https://render.com), click **New → Blueprint**, and connect `Vaasu08/SutraMind`.
+3. Apply `render.yaml`. That creates `sutramind-api` with demo seed data on boot.
+4. After deploy, copy the service URL, for example `https://sutramind-api.onrender.com`.
+5. Confirm `https://YOUR-API.onrender.com/health` returns `{"status":"ok"}` and `/docs` shows Swagger.
+
+Optional: attach Render PostgreSQL and set `DATABASE_URL` to the connection string. The app rewrites `postgres://` to SQLAlchemy’s `postgresql+psycopg://` driver automatically.
+
+**Frontend (Vercel)**
+
+1. In the Vercel project go to **Settings → Environment Variables**.
+2. Add `VITE_API_BASE_URL` = `https://YOUR-API.onrender.com/api/v1` (Production and Preview).
+3. Redeploy the frontend so Vite bakes in the API URL.
+
+CORS already allows `http://localhost:5173` and `https://*.vercel.app`. If you use a custom domain, add it to the backend `CORS_ORIGINS` env var (comma-separated).
+
+**Railway alternative:** New project → Deploy from GitHub → this repo. `railway.toml` builds the root `Dockerfile` and listens on `$PORT`.
+
+---
+
 ## 👥 Demo Accounts & Pre-Seeded Roles
 
 All demo accounts are pre-seeded with the password: **`Demo@123`**
